@@ -7,178 +7,248 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anon - eCommerce Website</title>
 
-  <!--
-    - favicon
-  -->
+  <!-- favicon -->
   <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
 
-  <!--
-    - custom css link
-  -->
+  <!-- custom css link -->
   <link rel="stylesheet" href="./assets/css/style-prefix.css">
 
-  <!--
-    - google font link
-  -->
+  <!-- google font link -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+  <!-- AOS (Animate On Scroll) CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- Particles.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.css">
+
+  <style>
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 100%;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .newsletter-title {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .newsletter-desc {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .input-wrapper {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .input-icon {
+      margin-right: 10px;
+    }
+    .email-field {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .btn-newsletter {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .btn-newsletter ion-icon {
+      margin-left: 10px;
+    }
+    .privacy-text {
+      font-size: 12px;
+      color: #666;
+      margin-top: 10px;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    .parallax {
+      background: url('./assets/images/parallax-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      font-size: 2em;
+    }
+  </style>
 </head>
 
 <body>
 
-
   <div class="overlay" data-overlay></div>
 
-  <!--
-    - MODAL
-  -->
-
+  <!-- MODAL -->
   <div class="modal" data-modal>
-
     <div class="modal-close-overlay" data-modal-overlay></div>
-
-    <div class="modal-content">
-
+    <div class="modal-content" data-aos="zoom-in">
       <button class="modal-close-btn" data-modal-close>
         <ion-icon name="close-outline"></ion-icon>
       </button>
-
       <div class="newsletter-img">
         <img src="./assets/images/newsletter.png" alt="subscribe newsletter" width="400" height="400">
       </div>
-
       <div class="newsletter">
-
         <form action="#">
-
           <div class="newsletter-header">
-
             <h3 class="newsletter-title">Subscribe Newsletter.</h3>
-
             <p class="newsletter-desc">
-              Subscribe the <b>Anon</b> to get latest products and discount update.
+              Subscribe to <b>Anon</b> to get the latest products and discount updates.
             </p>
-
           </div>
-
-          <input type="email" name="email" class="email-field" placeholder="Email Address" required>
-
-          <button type="submit" class="btn-newsletter">Subscribe</button>
-
+          <div class="form-group">
+            <div class="input-wrapper">
+              <ion-icon name="mail-outline" class="input-icon"></ion-icon>
+              <input type="email" name="email" class="email-field" placeholder="Email Address" required>
+            </div>
+          </div>
+          <button type="submit" class="btn-newsletter">
+            <span>Subscribe</span>
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+          </button>
+          <p class="privacy-text">
+            By subscribing, you agree to our Privacy Policy
+          </p>
         </form>
-
       </div>
-
     </div>
-
   </div>
 
+  <!-- Parallax Section -->
+  <div class="parallax">
+    Welcome to Anon!
+  </div>
 
+  <!-- Particles.js Container -->
+  <div id="particles-js"></div>
 
-
-
-  <!--
-    - NOTIFICATION TOAST
-  -->
-
+  <!-- NOTIFICATION TOAST -->
   <div class="notification-toast" data-toast>
-
     <button class="toast-close-btn" data-toast-close>
       <ion-icon name="close-outline"></ion-icon>
     </button>
-
     <div class="toast-banner">
       <img src="./assets/images/products/jewellery-1.jpg" alt="Rose Gold Earrings" width="80" height="70">
     </div>
-
     <div class="toast-detail">
-
       <p class="toast-message">
         Someone in new just bought
       </p>
-
       <p class="toast-title">
         Rose Gold Earrings
       </p>
-
       <p class="toast-meta">
         <time datetime="PT2M">2 Minutes</time> ago
       </p>
-
     </div>
-
   </div>
 
-
-
-
-
-  <!--
-    - HEADER
-  -->
-
+  <!-- HEADER -->
   <header>
-
     <div class="header-top">
-
       <div class="container">
-
         <ul class="header-social-container">
-
           <li>
             <a href="#" class="social-link">
               <ion-icon name="logo-facebook"></ion-icon>
             </a>
           </li>
-
           <li>
             <a href="#" class="social-link">
               <ion-icon name="logo-twitter"></ion-icon>
             </a>
           </li>
-
           <li>
             <a href="#" class="social-link">
               <ion-icon name="logo-instagram"></ion-icon>
             </a>
           </li>
-
           <li>
             <a href="#" class="social-link">
               <ion-icon name="logo-linkedin"></ion-icon>
             </a>
           </li>
-
         </ul>
-
         <div class="header-alert-news">
           <p>
             <b>Free Shipping</b>
             This Week Order Over - $55
           </p>
         </div>
-
         <div class="header-top-actions">
-
           <select name="currency">
-
             <option value="usd">USD &dollar;</option>
             <option value="eur">EUR &euro;</option>
-
           </select>
-
           <select name="language">
-
             <option value="en-US">English</option>
             <option value="es-ES">Espa&ntilde;ol</option>
             <option value="fr">Fran&ccedil;ais</option>
-
           </select>
-
         </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- AOS (Animate On Scroll) JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+  <!-- Particles.js JS -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS.load('particles-js', 'particles.json', function() {
+      console.log('particles.js loaded - callback');
+    });
+  </script>
+
+</body>
+
+</html>
 
       </div>
 
